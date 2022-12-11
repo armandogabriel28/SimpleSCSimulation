@@ -1,6 +1,6 @@
 import random
 
-
+###
 # global object allowing the simulation objects to communicate with each other
 class SimObjects:
 	currentTime = 0

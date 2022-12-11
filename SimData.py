@@ -2,6 +2,7 @@ import pandas as pd
 
 from SimLogic import SimObjects, Customer, DemandProduct, Store, InventoryProduct
 
+###
 
 # abstract class providing the structure for data tables and the generalize read method
 class DataTable:

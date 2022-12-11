@@ -4,9 +4,9 @@ import random
 # global object allowing the simulation objects to communicate with each other
 class SimObjects:
 	currentTime = 0
-	customerLookup = {}
-	storeLookup = {}
-	transitTimeLookup = {}
+	customerLookup = {} #dictionary of customers
+	storeLookup = {} #dictionary of stores
+	transitTimeLookup = {} #transition time dict
 	totalDemand = 0
 
 	@classmethod
@@ -80,7 +80,8 @@ class DemandProduct:
 		# todo implement this method
 		# iterates and processes self.incomingOrders
 		# if the order has been received at start if the current time, remove the order from self.incomingOrders and add the order to self.closedOrders
-		for order in self.incomingOrders:
+		aux = self.incomingOrders[:]
+		for order in aux:
 			if order.timeOfReceipt >= SimObjects.currentTime:
 				self.incomingOrders.remove(order)
 				self.closedOrders.append(order)
@@ -148,7 +149,8 @@ class InventoryProduct:
 		# todo implement this method
 		# iterates and processes self.incomingOrders
 		# if the order has been received at start if the current time, remove the order from self.incomingOrders and add the received quantity to the physical inventory
-		for order in self.incomingOrders:
+		aux = self.incomingOrders[:]
+		for order in aux:
 			if order.timeOfReceipt >= SimObjects.currentTime:
 				self.incomingOrders.remove(order)
 				self.physicalInvLevel += order.quantity
